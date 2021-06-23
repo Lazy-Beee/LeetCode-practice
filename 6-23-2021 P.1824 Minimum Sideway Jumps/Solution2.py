@@ -9,28 +9,23 @@ class Solution:
         steps = [1, 0, 1]
         for i in range(1, len(obstacles)):
             new_steps = [0, 0, 0]
-            routes = [1, 2, 3]
-            for obstacle in obstacles[(i-1):(i+1)]:
-                if obstacle in routes:
-                    routes.remove(obstacle)
-                    new_steps[obstacle - 1] = "x"
+            if obstacles[i] > 0:
+                new_steps[obstacles[i] - 1] = 1e6
+            if obstacles[i-1] > 0:
+                new_steps[obstacles[i-1] - 1] = 1e6
 
-            for route in routes:
+            for route in range(3):
                 steps_temp = []
-                for j in range(len(steps)):
-                    if steps[j] != "x":
-                        if j == route - 1:
+                if route != obstacles[i] - 1 and route != obstacles[i-1] - 1:
+                    for j in range(3):
+                        if j == route:
                             steps_temp.append(steps[j]-1)
                         else:
                             steps_temp.append(steps[j])
-                new_steps[route-1] = min(steps_temp) + 2
+                    new_steps[route] = min(steps_temp) + 1
             steps = new_steps
 
-        steps_temp = []
-        for step in steps:
-            if step != "x":
-                steps_temp.append(step)
-        return min(steps_temp) - len(obstacles) + 1
+        return min(steps)
 
 
 test = Solution()
