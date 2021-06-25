@@ -1,5 +1,5 @@
 """
-Day 1   6/24/2021-Thursday
+Day 3   6/24/2021-Thursday
 Problem: https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/
 """
 
