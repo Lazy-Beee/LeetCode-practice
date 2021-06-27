@@ -14,8 +14,8 @@ class Solution:
         time_start = time.time()
         counts = []
         nums_sorted = sorted(nums)
-        for target in nums:
-            counts.append(bisect.bisect_left(nums_sorted, target))
+        for num in nums:
+            counts.append(bisect.bisect_left(nums_sorted, num))
             nums_sorted.pop(counts[-1])
         print(time.time()-time_start)
         return counts
