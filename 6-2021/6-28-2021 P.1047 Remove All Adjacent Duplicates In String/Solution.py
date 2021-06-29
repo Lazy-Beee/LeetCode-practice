@@ -1,5 +1,5 @@
 """
-Day 6   6/28/2021-Sunday
+Day 6   6/28/2021
 Problem: https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/
 
 You are given a string s consisting of lowercase English letters. A duplicate removal consists of
