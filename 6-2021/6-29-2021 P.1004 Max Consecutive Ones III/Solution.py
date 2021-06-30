@@ -9,30 +9,36 @@ array if you can flip at most k 0's.
 
 class Solution:
     def longestOnes(self, nums: list[int], k: int) -> int:
-        stack = []
         max_count = 0
+        a = 0
+        b = 0
 
         for num in nums:
-            stack.append(num)
+            b += 1
             if num == 0:
                 k -= 1
                 while k < 0:
-                    if stack.pop(0) == 0:
+                    if nums[a] == 0:
                         k += 1
+                    a += 1
 
-            max_count = max(max_count, len(stack))
+            max_count = max(max_count, b - a)
         return max_count
 
     def longestOnes_2(self, nums: list[int], k: int) -> int:
         start = 0
         for end in range(len(nums)):
-            k = k - (1 - nums[end])
+            k -= (1 - nums[end])
             if k < 0:
-                k = k + (1 - nums[start])
+                k += (1 - nums[start])
                 start = start + 1
+            print(f'k: {k}, start: {start}, end: {end}')
         return end - start + 1
 
 
 if __name__ == "__main__":
     test = Solution()
-    print(test.longestOnes_2([0,0,0,1], 2))
+    nums = [1,0,1,1,0,0,0,1,1,1,1,0,0,1,1]
+    k = 2
+    print(test.longestOnes(nums, k))
+    print(test.longestOnes_2(nums, k))
