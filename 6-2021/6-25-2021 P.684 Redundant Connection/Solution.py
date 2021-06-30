@@ -41,7 +41,6 @@ class Solution:
     def findRedundantConnection_2(self, edges: list[list[int]]) -> list[int]:
         graph = collections.defaultdict(set)
 
-        # depth-first search
         def dfs(source, target):
             to_search = [source]
             searched = set()
